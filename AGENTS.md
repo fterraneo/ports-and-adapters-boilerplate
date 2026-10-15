@@ -57,7 +57,17 @@ type(scope): imperative summary
 
 ### Co-author
 
-Append the current agent/model as a co-author on every commit:
+Every commit must credit the model that actually created it. Append a co-author
+whose identity is the committing agent's own model ID:
+
+```
+Co-authored-by: <provider>/<model-id> <noreply@github.com>
+```
+
+- Read the value from your own model identity; do not copy a trailer from an earlier
+  commit or from another agent.
+- If your model ID is unknown, ask the human instead of guessing.
+- Example, for the model used to write these guidelines:
 
 ```
 Co-authored-by: github-copilot/claude-haiku-5.5 <noreply@github.com>
