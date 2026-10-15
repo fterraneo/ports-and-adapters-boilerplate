@@ -177,4 +177,10 @@ remove past entries; supersede them with a new one.
   unless justified in code and logged here. Note: `tsconfig.json` currently sets
   `noImplicitAny: false`, which carves an exception out of `strict`; revisit if it
   starts hiding bugs.
+- 2026-10-15 — commit rules — Supersedes the co-author part of the 2026-10-15 commit
+  rules entry above: the `Co-authored-by` trailer must name the model that actually
+  creates the commit (`<provider>/<model-id>`), not a fixed model. Agents read their
+  own model ID and never copy a trailer from an earlier commit. The earlier entry's
+  rules on scopes still stand.
+
 
