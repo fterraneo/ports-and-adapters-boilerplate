@@ -163,3 +163,8 @@ remove past entries; supersede them with a new one.
   and adapters at the edge; no canonical folder structure is prescribed yet.
 - 2026-10-15 — testing — Outside-In TDD with acceptance tests driven by in-memory
   adapters, colocated `*.test.ts` unit tests, and `testdouble` for doubles.
+- 2026-10-15 — typescript — `"strict": true` is mandatory and `any` is forbidden
+  unless justified in code and logged here. Note: `tsconfig.json` currently sets
+  `noImplicitAny: false`, which carves an exception out of `strict`; revisit if it
+  starts hiding bugs.
+
