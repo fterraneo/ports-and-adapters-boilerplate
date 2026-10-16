@@ -1,8 +1,7 @@
 # Agent Guidelines
 
 Guidelines for any agent or model developing on this repository. This file is the
-single source of truth for the development principles below. Keep it updated: when a
-decision on these topics changes, append an entry to the [Decision Log](#decision-log).
+single source of truth for the development principles below. Keep it updated.
 
 - [Commands](#commands)
 - [Commit rules](#commit-rules)
@@ -10,7 +9,6 @@ decision on these topics changes, append an entry to the [Decision Log](#decisio
 - [Architecture](#architecture)
 - [Testing](#testing)
 - [TypeScript](#typescript)
-- [Decision Log](#decision-log)
 
 ## Commands
 
@@ -99,6 +97,7 @@ human to review and push.
 We use **Hexagonal Architecture** (Ports and Adapters) to keep the core domain with
 zero infrastructure dependencies.
 
+
 - The **core** (domain and application layer) must have no infrastructure
   dependencies: no framework, no driver, no SDK, no database client, no filesystem,
   no clock or random source provided by the runtime, no direct network calls.
@@ -109,7 +108,6 @@ zero infrastructure dependencies.
   outermost composition root. The core never names an adapter, and never imports
   from one.
 - Keep the folder structure free-form for now: no canonical layout is prescribed.
-  When you introduce a structure, record it in the Decision Log first.
 
 ## Testing
 
@@ -149,38 +147,5 @@ Call `td.reset()` in an `afterEach` so state does not leak between tests.
 
 - `tsconfig.json` must keep `"strict": true`.
 - Do not introduce `any`. Use `unknown` and narrow it when the type is genuinely not
-  known. If `any` is unavoidable, document why in the code and note it in the
-  Decision Log.
+  known.
 - Prefer types that make invalid states unrepresentable.
-
-## Decision Log
-
-Append-only record of decisions taken on the topics above (commit rules, code
-principles, architecture, testing, TypeScript). Newest entries at the bottom.
-
-When you take or change a decision in one of these areas, add an entry in this
-format: `- YYYY-MM-DD — <topic> — <what was decided and why>`. Do not rewrite or
-remove past entries; supersede them with a new one.
-
-- 2026-10-15 — repository — Adopted `AGENTS.md` as the canonical agent guideline file,
-  with `CLAUDE.md` importing it, so all agents and models share one context.
-- 2026-10-15 — commit rules — Microcommits plus Conventional Commits, every commit
-  carrying `Co-authored-by: github-copilot/claude-haiku-5.5 <noreply@github.com>`.
-  Scopes are optional and not enforced by any hook.
-- 2026-10-15 — commit rules — Pushing is forbidden to agents: only the human pushes to
-  the remote repository.
-- 2026-10-15 — architecture — Hexagonal Architecture with ports defined in the core
-  and adapters at the edge; no canonical folder structure is prescribed yet.
-- 2026-10-15 — testing — Outside-In TDD with acceptance tests driven by in-memory
-  adapters, colocated `*.test.ts` unit tests, and `testdouble` for doubles.
-- 2026-10-15 — typescript — `"strict": true` is mandatory and `any` is forbidden
-  unless justified in code and logged here. Note: `tsconfig.json` currently sets
-  `noImplicitAny: false`, which carves an exception out of `strict`; revisit if it
-  starts hiding bugs.
-- 2026-10-15 — commit rules — Supersedes the co-author part of the 2026-10-15 commit
-  rules entry above: the `Co-authored-by` trailer must name the model that actually
-  creates the commit (`<provider>/<model-id>`), not a fixed model. Agents read their
-  own model ID and never copy a trailer from an earlier commit. The earlier entry's
-  rules on scopes still stand.
-
-
