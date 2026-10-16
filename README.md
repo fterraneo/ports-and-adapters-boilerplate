@@ -5,7 +5,7 @@ It comes with Jest, ESLint, Prettier and strict TypeScript already configured.
 
 ## Origin
 
-This repository is a fork of [nodejs-boilerplate](https://github.com/fterraneo/nodejs-boilerplate),
+This repository is created out of [nodejs-boilerplate](https://github.com/fterraneo/nodejs-boilerplate),
 on the same GitHub account. It keeps the same tooling and adds guidelines for hexagonal
 architecture, outside-in TDD and agent-driven development.
 
